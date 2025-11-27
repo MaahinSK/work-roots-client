@@ -1,0 +1,10 @@
+{
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(auth)/register/page": "app/(auth)/register/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/(protected)/post-skill/page": "app/(protected)/post-skill/page.js",
+  "/(protected)/my-skill-listings/page": "app/(protected)/my-skill-listings/page.js",
+  "/(protected)/hire-skill/page": "app/(protected)/hire-skill/page.js",
+  "/(protected)/manage-hires/page": "app/(protected)/manage-hires/page.js"
+}
