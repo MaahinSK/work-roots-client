@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ['latin'] });
 
+// Remove export const metadata and use generateMetadata instead
 export const metadata = {
   title: 'Work Roots - Find Your Next Opportunity',
   description: 'Connect with skilled professionals and find your next project',
