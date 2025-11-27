@@ -17,6 +17,7 @@ const categories = [
   'Consulting',
   'Other'
 ];
+export const dynamic = 'force-dynamic';
 
 export default function HireSkill() {
   const [skills, setSkills] = useState([]);

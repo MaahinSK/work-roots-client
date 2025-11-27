@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { FaTrash, FaUser, FaBriefcase, FaCalendar, FaDollarSign, FaExclamationTriangle } from 'react-icons/fa';
 
+export const dynamic = 'force-dynamic';
+
 export default function ManageHires() {
   const [hires, setHires] = useState([]);
   const [loading, setLoading] = useState(true);

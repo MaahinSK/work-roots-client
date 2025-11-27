@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Explicitly disable static export
+  output: 'standalone',
+  
   webpack: (config, { isServer }) => {
     // Handle Firebase and Undici module issues
     if (!isServer) {
@@ -19,15 +22,21 @@ const nextConfig = {
 
     return config;
   },
+  
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
+    unoptimized: false, // Enable image optimization
   },
+  
   reactStrictMode: true,
-  // Remove output: 'export' - we need server-side rendering
-  // Enable experimental features for better performance
+  
+  // Disable static optimization for dynamic pages
   experimental: {
     webpackBuildWorker: true,
-  }
+  },
+  
+  // Enable trailing slashes for better compatibility
+  trailingSlash: false,
 }
 
 module.exports = nextConfig

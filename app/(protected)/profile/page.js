@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Spinner from '../../../components/Spinner';
 import axios from 'axios';
 import { FaUser, FaEnvelope, FaPhone, FaCamera } from 'react-icons/fa';
-
+export const dynamic = 'force-dynamic';
 export default function Profile() {
   const [formData, setFormData] = useState({
     name: '',

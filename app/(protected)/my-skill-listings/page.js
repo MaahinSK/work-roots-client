@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { FaEdit, FaTrash, FaPlus, FaExclamationTriangle } from 'react-icons/fa';
 
+export const dynamic = 'force-dynamic';
+
 export default function MySkillListings() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
