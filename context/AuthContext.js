@@ -5,7 +5,9 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup
 } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import axios from 'axios';
@@ -22,8 +24,6 @@ export function AuthProvider({ children }) {
   const [userProfile, setUserProfile] = useState(null);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server-new.vercel.app/api';
-
-
 
   // Sync user to MongoDB
   const syncUserToDB = async (user, additionalData = {}) => {
@@ -49,6 +49,13 @@ export function AuthProvider({ children }) {
 
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const signInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    await syncUserToDB(result.user);
+    return result.user;
   };
 
   const logout = () => {
@@ -92,6 +99,7 @@ export function AuthProvider({ children }) {
     userProfile,
     signup,
     login,
+    signInWithGoogle,
     logout,
     updateUserProfile
   };

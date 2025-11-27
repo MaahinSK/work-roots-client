@@ -5,7 +5,7 @@ import { useAuth } from '../../../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Spinner from '../../../components/Spinner';
-import { FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { signup, currentUser } = useAuth();
+  const { signup, signInWithGoogle, currentUser } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (formData.password !== formData.confirmPassword) {
       toast.error('Passwords do not match');
       return;
@@ -54,6 +54,19 @@ export default function Register() {
       router.push('/');
     } catch (error) {
       toast.error('Failed to create account: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    try {
+      await signInWithGoogle();
+      toast.success('Successfully signed up with Google!');
+      router.push('/');
+    } catch (error) {
+      toast.error('Failed to sign up with Google: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -171,6 +184,27 @@ export default function Register() {
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? <Spinner /> : 'Create Account'}
+            </button>
+          </div>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-gradient-to-br from-green-50 to-blue-50 text-gray-500">Or continue with</span>
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="button"
+              onClick={handleGoogleSignIn}
+              disabled={loading}
+              className="group relative w-full flex justify-center items-center gap-2 py-3 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <FaGoogle className="text-red-500" size={20} />
+              Sign up with Google
             </button>
           </div>
         </form>
