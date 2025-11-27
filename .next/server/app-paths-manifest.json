@@ -4,8 +4,8 @@
   "/(auth)/register/page": "app/(auth)/register/page.js",
   "/page": "app/page.js",
   "/(protected)/my-skill-listings/page": "app/(protected)/my-skill-listings/page.js",
-  "/(protected)/post-skill/page": "app/(protected)/post-skill/page.js",
-  "/(protected)/manage-hires/page": "app/(protected)/manage-hires/page.js",
   "/(protected)/hire-skill/page": "app/(protected)/hire-skill/page.js",
-  "/(protected)/profile/page": "app/(protected)/profile/page.js"
+  "/(protected)/post-skill/page": "app/(protected)/post-skill/page.js",
+  "/(protected)/profile/page": "app/(protected)/profile/page.js",
+  "/(protected)/manage-hires/page": "app/(protected)/manage-hires/page.js"
 }

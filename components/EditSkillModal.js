@@ -37,7 +37,7 @@ export default function EditSkillModal({ skill, isOpen, onClose, onUpdate }) {
   const [loading, setLoading] = useState(false);
   const { currentUser } = useAuth();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
 
   useEffect(() => {
     if (skill) {
@@ -55,11 +55,11 @@ export default function EditSkillModal({ skill, isOpen, onClose, onUpdate }) {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
+
     if (type === 'checkbox') {
       setFormData(prev => ({
         ...prev,
-        availableDays: checked 
+        availableDays: checked
           ? [...prev.availableDays, value]
           : prev.availableDays.filter(day => day !== value)
       }));
@@ -79,7 +79,7 @@ export default function EditSkillModal({ skill, isOpen, onClose, onUpdate }) {
       const response = await axios.put(`${API_URL}/skills/${skill._id}`, formData, {
         headers: { Authorization: `Bearer ${currentUser.uid}` }
       });
-      
+
       toast.success('Skill updated successfully!');
       onUpdate(response.data.data);
       onClose();
@@ -97,7 +97,7 @@ export default function EditSkillModal({ skill, isOpen, onClose, onUpdate }) {
       <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Edit Skill</h2>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="edit-title" className="block text-sm font-medium text-gray-700">

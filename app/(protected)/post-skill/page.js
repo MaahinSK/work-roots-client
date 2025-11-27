@@ -42,7 +42,7 @@ export default function PostSkill() {
   const { currentUser } = useAuth();
   const router = useRouter();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5002/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
 
   useEffect(() => {
     if (!currentUser) {
@@ -52,11 +52,11 @@ export default function PostSkill() {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
+
     if (type === 'checkbox') {
       setFormData(prev => ({
         ...prev,
-        availableDays: checked 
+        availableDays: checked
           ? [...prev.availableDays, value]
           : prev.availableDays.filter(day => day !== value)
       }));
@@ -76,7 +76,7 @@ export default function PostSkill() {
       await axios.post(`${API_URL}/skills`, formData, {
         headers: { Authorization: `Bearer ${currentUser.uid}` }
       });
-      
+
       toast.success('Skill posted successfully!');
       setFormData({
         title: '',

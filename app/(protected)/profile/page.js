@@ -17,7 +17,7 @@ export default function Profile() {
   const [saving, setSaving] = useState(false);
   const { currentUser, userProfile, updateUserProfile } = useAuth();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
 
   useEffect(() => {
     if (userProfile) {
@@ -45,12 +45,12 @@ export default function Profile() {
       await axios.put(`${API_URL}/auth/profile`, formData, {
         headers: { Authorization: `Bearer ${currentUser.uid}` }
       });
-      
+
       await updateUserProfile({
         displayName: formData.name,
         photoURL: formData.profilePicture
       });
-      
+
       toast.success('Profile updated successfully!');
     } catch (error) {
       toast.error('Failed to update profile: ' + error.response?.data?.error || error.message);

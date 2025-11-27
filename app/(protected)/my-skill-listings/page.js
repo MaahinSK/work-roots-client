@@ -17,7 +17,7 @@ export default function MySkillListings() {
   const [skillToDelete, setSkillToDelete] = useState(null);
   const { currentUser } = useAuth();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
 
   useEffect(() => {
     fetchMySkills();

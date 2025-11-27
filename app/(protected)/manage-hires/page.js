@@ -15,7 +15,7 @@ export default function ManageHires() {
   const [hireToDelete, setHireToDelete] = useState(null);
   const { currentUser } = useAuth();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
 
   useEffect(() => {
     fetchMyHires();
@@ -122,14 +122,13 @@ export default function ManageHires() {
                           </div>
                           <div className="flex items-center text-gray-600 mb-2">
                             <FaBriefcase className="mr-2" />
-                            <span>Status: 
-                              <span className={`ml-1 px-2 py-1 rounded-full text-xs font-medium ${
-                                hire.status === 'active' 
+                            <span>Status:
+                              <span className={`ml-1 px-2 py-1 rounded-full text-xs font-medium ${hire.status === 'active'
                                   ? 'bg-green-100 text-green-800'
                                   : hire.status === 'completed'
-                                  ? 'bg-blue-100 text-blue-800'
-                                  : 'bg-red-100 text-red-800'
-                              }`}>
+                                    ? 'bg-blue-100 text-blue-800'
+                                    : 'bg-red-100 text-red-800'
+                                }`}>
                                 {hire.status.charAt(0).toUpperCase() + hire.status.slice(1)}
                               </span>
                             </span>
@@ -139,7 +138,7 @@ export default function ManageHires() {
                             <span>Hired on: {formatDate(hire.hiredAt)}</span>
                           </div>
                         </div>
-                        
+
                         <button
                           onClick={() => handleRemoveClick(hire)}
                           className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-full shadow-lg transition duration-300 ml-4"
@@ -180,7 +179,7 @@ export default function ManageHires() {
                 <h3 className="text-lg font-semibold">Remove Hire</h3>
               </div>
               <p className="text-gray-600 mb-6">
-                Are you sure you want to remove "{hireToDelete?.skillTitle}" from your hires? 
+                Are you sure you want to remove "{hireToDelete?.skillTitle}" from your hires?
                 This action cannot be undone.
               </p>
               <div className="flex justify-end space-x-4">

@@ -33,7 +33,7 @@ export default function HireSkill() {
   const [showFilters, setShowFilters] = useState(false);
   const { currentUser } = useAuth();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
 
   useEffect(() => {
     fetchSkills();
@@ -55,7 +55,7 @@ export default function HireSkill() {
   };
 
   const filterSkills = () => {
-    let filtered = skills.filter(skill => 
+    let filtered = skills.filter(skill =>
       skill.userId !== currentUser?.uid // Don't show user's own skills
     );
 
@@ -72,13 +72,13 @@ export default function HireSkill() {
     }
 
     if (filters.minExperience) {
-      filtered = filtered.filter(skill => 
+      filtered = filtered.filter(skill =>
         skill.yearsOfExperience >= parseInt(filters.minExperience)
       );
     }
 
     if (filters.maxExperience) {
-      filtered = filtered.filter(skill => 
+      filtered = filtered.filter(skill =>
         skill.yearsOfExperience <= parseInt(filters.maxExperience)
       );
     }
@@ -130,7 +130,7 @@ export default function HireSkill() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">Find Talent</h1>
-          
+
           {/* Search and Filter Bar */}
           <div className="bg-white rounded-lg shadow p-6 mb-6">
             <div className="flex flex-col md:flex-row gap-4">
@@ -146,14 +146,14 @@ export default function HireSkill() {
                   />
                 </div>
               </div>
-              
-             <button
-  onClick={() => setShowFilters(!showFilters)}
-  className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700" // ADDED text-gray-700
->
-  <FaFilter className="mr-2 text-gray-700" /> {/* ADDED text-gray-700 */}
-  Filters
-</button>
+
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700" // ADDED text-gray-700
+              >
+                <FaFilter className="mr-2 text-gray-700" /> {/* ADDED text-gray-700 */}
+                Filters
+              </button>
             </div>
 
             {/* Expanded Filters */}
@@ -174,7 +174,7 @@ export default function HireSkill() {
                       ))}
                     </select>
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Min Experience
@@ -187,7 +187,7 @@ export default function HireSkill() {
                       className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Max Experience
@@ -200,7 +200,7 @@ export default function HireSkill() {
                       className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
-                  
+
                   <div className="flex items-end">
                     <button
                       onClick={clearFilters}

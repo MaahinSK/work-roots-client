@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { 
-  signInWithEmailAndPassword, 
+import {
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
@@ -21,10 +21,10 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState(null);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://server-v2-one.vercel.app/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
 
 
-  
+
   // Sync user to MongoDB
   const syncUserToDB = async (user, additionalData = {}) => {
     try {
@@ -65,7 +65,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
-      
+
       if (user) {
         await syncUserToDB(user);
         // Fetch user profile from our API
@@ -80,7 +80,7 @@ export function AuthProvider({ children }) {
       } else {
         setUserProfile(null);
       }
-      
+
       setLoading(false);
     });
 
