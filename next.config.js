@@ -1,15 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Add this for static export
-  trailingSlash: true,
-  images: {
-    unoptimized: true, // Required for static export
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
-  },
-}
-
-module.exports = nextConfig/** @type {import('next').NextConfig} */
-const nextConfig = {
   webpack: (config, { isServer }) => {
     // Handle Firebase and Undici module issues
     if (!isServer) {
@@ -32,7 +22,8 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
   },
-  // Remove output: 'export' for now - we'll use server-side rendering
+  // Enable React strict mode for better development experience
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig
