@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "next build && next export",
+    "build:firebase": "next build && next export && firebase deploy --only hosting",
+    "preview": "next build && next export && npx serve out",
+    "deploy": "firebase deploy --only hosting"
   },
   "dependencies": {
     "next": "14.0.0",
