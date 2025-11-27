@@ -23,6 +23,8 @@ export function AuthProvider({ children }) {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://server-v2-one.vercel.app/api';
 
+
+  
   // Sync user to MongoDB
   const syncUserToDB = async (user, additionalData = {}) => {
     try {
