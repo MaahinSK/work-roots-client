@@ -22,8 +22,12 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
   },
-  // Enable React strict mode for better development experience
   reactStrictMode: true,
+  // Remove output: 'export' - we need server-side rendering
+  // Enable experimental features for better performance
+  experimental: {
+    webpackBuildWorker: true,
+  }
 }
 
 module.exports = nextConfig
