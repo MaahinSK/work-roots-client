@@ -15,7 +15,7 @@ export default function ManageHires() {
   const [hireToDelete, setHireToDelete] = useState(null);
   const { currentUser } = useAuth();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server.vercel.app/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://server-v2-one.vercel.app/api';
 
   useEffect(() => {
     fetchMyHires();
@@ -124,10 +124,10 @@ export default function ManageHires() {
                             <FaBriefcase className="mr-2" />
                             <span>Status:
                               <span className={`ml-1 px-2 py-1 rounded-full text-xs font-medium ${hire.status === 'active'
-                                  ? 'bg-green-100 text-green-800'
-                                  : hire.status === 'completed'
-                                    ? 'bg-blue-100 text-blue-800'
-                                    : 'bg-red-100 text-red-800'
+                                ? 'bg-green-100 text-green-800'
+                                : hire.status === 'completed'
+                                  ? 'bg-blue-100 text-blue-800'
+                                  : 'bg-red-100 text-red-800'
                                 }`}>
                                 {hire.status.charAt(0).toUpperCase() + hire.status.slice(1)}
                               </span>
