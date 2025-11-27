@@ -37,7 +37,7 @@ export default function EditSkillModal({ skill, isOpen, onClose, onUpdate }) {
   const [loading, setLoading] = useState(false);
   const { currentUser } = useAuth();
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://server-v2-one.vercel.app/api';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://work-roots-server-new.vercel.app/api';
 
   useEffect(() => {
     if (skill) {
